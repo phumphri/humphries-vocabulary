@@ -13,7 +13,7 @@ function getLastWord()
     
     // Encode the user input as query parameters in a URL.
     var hostAndPort = location.host
-    var url = "http://" + hostAndPort + "/last_word"
+    var url = "https://" + hostAndPort + "/last_word"
     
     // Fetch the contents of that URL using the XMLHttpRequest object.
     var request = new XMLHttpRequest();

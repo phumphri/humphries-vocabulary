@@ -13,7 +13,7 @@ function getRandomWord()
     
     // Encode the user input as query parameters in a URL.
     var hostAndPort = location.host; 
-    var url = "http://" + hostAndPort + "/random_word";
+    var url = "https://" + hostAndPort + "/random_word";
     
     // Fetch the contents of that URL using the XMLHttpRequest object.
     var request = new XMLHttpRequest();
