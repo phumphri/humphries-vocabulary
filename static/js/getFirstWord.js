@@ -13,7 +13,7 @@ function getFirstWord()
         
     // Encode the user input as query parameters in a URL.
     var hostAndPort = location.host            /*  Host server and port.   */
-    var url = "http://" + hostAndPort + "/first_word"
+    var url = "https://" + hostAndPort + "/first_word"
     
     // Fetch the contents of that URL using the XMLHttpRequest object.
     var request = new XMLHttpRequest()
