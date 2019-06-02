@@ -252,23 +252,30 @@ def deleted_word(word_spelling):
 # Connect to a Postgres database depending on location.
 def connect_to_postgres():
     hostname = socket.gethostname()
+    print('######### Host Name:', hostname)
     conn = None
     try:
         if (hostname == 'XPS'):
             conn = psycopg2.connect(os.environ['LOCAL_POSTGRES'])
             return conn
-        elif (hostname == 'DESKTOP-S08TN4O'):  
+        elif (hostname == 'DESKTOP-S08TN4O'): 
+            print('####### Attempting to connect with LOCAL_POSTGRES:', os.environ['LOCAL_POSTGRES']) 
             conn = psycopg2.connect(os.environ['LOCAL_POSTGRES'])
+            if conn == None:
+                print('\n\n######### Unable to connect to:', os.environ['AWS_POSTGRES'])
+            else:
+                print('\n\n######## Successful connection to:', os.environ['AWS_POSTGRES'])
             return conn
         else:
+            print('####### Attempting to connect with AWS_POSTGRES:', os.environ['AWS_POSTGRES']) 
             conn = psycopg2.connect(os.environ['AWS_POSTGRES'])
             if conn == None:
-                print('\n\nUnable to connect to:', os.environ['AWS_POSTGRES'])
+                print('\n\n######### Unable to connect to:', os.environ['AWS_POSTGRES'])
             else:
-                print('\n\nSuccessful connection to:', os.environ['AWS_POSTGRES'])
+                print('\n\n######## Successful connection to:', os.environ['AWS_POSTGRES'])
             return conn
     except Exception as e:
-        print('Could not make database connedtion:', e)
+        print('######### Could not make database connedtion:', e)
         raise InternalServerError('Could not make database connection.')
 
 # Database add
