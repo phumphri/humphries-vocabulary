@@ -252,6 +252,7 @@ def deleted_word(word_spelling):
 # Connect to a Postgres database depending on location.
 def connect_to_postgres():
     hostname = socket.gethostname()
+    conn = None
     try:
         if (hostname == 'XPS'):
             conn = psycopg2.connect(os.environ['LOCAL_POSTGRES'])
@@ -261,6 +262,10 @@ def connect_to_postgres():
             return conn
         else:
             conn = psycopg2.connect(os.environ['AWS_POSTGRES'])
+            if conn == None:
+                print('\n\nUnable to connect to:', os.environ['AWS_POISTGRES'])
+            else:
+                print('\n\nSuccessful connection to:', os.environ['AWS_POISTGRES'])
             return conn
     except Exception as e:
         print('Could not make database connedtion:', e)
