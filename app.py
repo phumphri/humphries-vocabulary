@@ -263,9 +263,9 @@ def connect_to_postgres():
         else:
             conn = psycopg2.connect(os.environ['AWS_POSTGRES'])
             if conn == None:
-                print('\n\nUnable to connect to:', os.environ['AWS_POISTGRES'])
+                print('\n\nUnable to connect to:', os.environ['AWS_POSTGRES'])
             else:
-                print('\n\nSuccessful connection to:', os.environ['AWS_POISTGRES'])
+                print('\n\nSuccessful connection to:', os.environ['AWS_POSTGRES'])
             return conn
     except Exception as e:
         print('Could not make database connedtion:', e)
