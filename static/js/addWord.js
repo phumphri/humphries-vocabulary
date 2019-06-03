@@ -62,7 +62,14 @@ function addWord()
     
     // Encode the user input as query parameters in a URL.
     var hostAndPort = location.host; 
-    var url = "https://" + hostAndPort + "/add_word";
+    if (hostAndPort == '127.0.0.1:5000')
+    {
+        url = "http://" + hostAndPort + "/add_word"
+    }
+    else
+    {
+        url = "https://" + hostAndPort + "/add_word" 
+    }
     
     // Fetch the contents of that URL using the XMLHttpRequest object.
     var request = new XMLHttpRequest();

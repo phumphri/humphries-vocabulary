@@ -12,8 +12,15 @@ function getFirstWord()
     }
         
     // Encode the user input as query parameters in a URL.
-    var hostAndPort = location.host            /*  Host server and port.   */
-    var url = "https://" + hostAndPort + "/first_word"
+    hostAndPort = location.host            /*  Host server and port.   */
+    if (hostAndPort == '127.0.0.1:5000')
+    {
+        url = "http://" + hostAndPort + "/first_word"
+    }
+    else
+    {
+        url = "https://" + hostAndPort + "/first_word"
+    }
     
     // Fetch the contents of that URL using the XMLHttpRequest object.
     var request = new XMLHttpRequest()

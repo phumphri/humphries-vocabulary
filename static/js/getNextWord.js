@@ -13,7 +13,14 @@ function getNextWord()
     
     // Encode the user input as query parameters in a URL.
     var hostAndPort = location.host
-    var url = "https://" + hostAndPort + "/next_word/" + ws.value;
+    if (hostAndPort == '127.0.0.1:5000')
+    {
+        url = "http://" + hostAndPort + "/next_word/" + ws.value
+    }
+    else
+    {
+        url = "https://" + hostAndPort + "/next_word/" + ws.value
+    }
     
     // Fetch the contents of that URL using the XMLHttpRequest object.
     var request = new XMLHttpRequest();
